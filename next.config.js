@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
+  basePath: '/Luxe-Digital-Official',
+  assetPrefix: '/Luxe-Digital-Official',
   images: {
     unoptimized: true,
   },
