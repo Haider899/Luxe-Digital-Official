@@ -13,11 +13,11 @@ export default function TeamMemberModal({ member, onClose, onChat }) {
 
   return (
     <div
-      className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[150] flex items-center justify-center p-4 md:p-8 overflow-y-auto"
+      className="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[999] flex items-center justify-center p-6 md:p-20 overflow-y-auto"
       onClick={() => setIsOpen(false)}
     >
       <div
-        className="bg-white border border-slate-100 rounded-[40px] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in relative my-auto"
+        className="bg-white border border-slate-100 rounded-[40px] shadow-2xl max-w-2xl w-full max-h-[75vh] md:max-h-[80vh] overflow-y-auto animate-fade-in relative shadow-emerald-500/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
