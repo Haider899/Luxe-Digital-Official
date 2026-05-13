@@ -4,9 +4,9 @@
   "description": "Luxe Digital - Professional Creative Agency Website",
   "private": true,
   "scripts": {
-    "dev": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
-    "build": "set NODE_OPTIONS='--max-old-space-size=8192' && next build",
-    "start": "set NODE_OPTIONS='--max-old-space-size=8192' && next start",
+    "dev": "cross-env NODE_OPTIONS='--max-old-space-size=8192' next dev",
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' next build",
+    "start": "cross-env NODE_OPTIONS='--max-old-space-size=8192' next start",
     "lint": "next lint",
     "export": "next export"
   },
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "cross-env": "^10.1.0",
     "eslint": "^8.50.0",
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.31",
