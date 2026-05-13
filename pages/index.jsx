@@ -1,20 +1,30 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
+import Reviews from '../components/Reviews';
 import Team from '../components/Team';
 import WhyUs from '../components/WhyUs';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import FAQ from '../components/FAQ';
 import ContactModal from '../components/ContactModal';
+import ParticleBackground from '../components/ParticleBackground';
+import TeamMemberModal from '../components/TeamMemberModal';
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [selectedTeamMember, setSelectedTeamMember] = useState(null);
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
+
+  const handleTeamMemberChat = () => {
+    setSelectedTeamMember(null);
+    openContactModal();
+  };
 
   return (
     <>
@@ -26,29 +36,49 @@ export default function Home() {
         <link rel="canonical" href="https://luxedigital.com" />
       </Head>
 
-      <main className="relative min-h-screen bg-white text-slate-900 overflow-hidden">
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="relative min-h-screen bg-white text-slate-900 overflow-hidden"
+      >
+        <ParticleBackground />
+        
         {/* Contact Form Modal */}
         <ContactModal 
           isOpen={isContactModalOpen} 
           onClose={closeContactModal} 
         />
 
+        {/* Team Member Modal - Rendered at root for correct stacking context */}
+        {selectedTeamMember && (
+          <TeamMemberModal 
+            member={selectedTeamMember} 
+            onClose={() => setSelectedTeamMember(null)}
+            onChat={handleTeamMemberChat}
+          />
+        )}
+
         {/* Navigation */}
         <Navigation onStartProject={openContactModal} />
 
         {/* Main Sections */}
-        <div className="pt-[110px]">
+        <div className="relative z-10 pt-[110px]">
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
           <Services />
-          <Team onStartProject={openContactModal} />
+          <Team 
+            onStartProject={openContactModal} 
+            onViewProfile={(member) => setSelectedTeamMember(member)}
+          />
+          <Reviews />
           <FAQ />
           <CTA onStartProject={openContactModal} />
         </div>
 
         {/* Footer */}
         <Footer />
-      </main>
+      </motion.main>
     </>
   );
 }

@@ -209,14 +209,7 @@ const teamMembers = [
 ];
 
 
-export default function Team({ onStartProject }) {
-  const [selectedMember, setSelectedMember] = useState(null);
-
-  const handleChat = () => {
-    setSelectedMember(null); // Close team modal
-    onStartProject(); // Open contact modal
-  };
-
+export default function Team({ onStartProject, onViewProfile }) {
   return (
     <section id="team" className="relative py-24 px-6 bg-white overflow-hidden">
       <div className="container-custom">
@@ -234,21 +227,12 @@ export default function Team({ onStartProject }) {
             <TeamMemberCard
               key={idx}
               {...member}
-              onClick={() => setSelectedMember(idx)}
+              onClick={() => onViewProfile(member)}
               index={idx}
             />
           ))}
         </div>
       </div>
-
-      {/* Modal */}
-      {selectedMember !== null && (
-        <TeamMemberModal
-          member={teamMembers[selectedMember]}
-          onClose={() => setSelectedMember(null)}
-          onChat={handleChat}
-        />
-      )}
 
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none" />

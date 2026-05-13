@@ -13,15 +13,15 @@ export default function TeamMemberModal({ member, onClose, onChat }) {
 
   return (
     <div
-      className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[999] flex items-center justify-center p-4 md:p-10"
       onClick={() => setIsOpen(false)}
     >
       <div
-        className="bg-white border border-slate-100 rounded-[40px] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in"
+        className="bg-white border border-slate-100 rounded-[40px] shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-hidden animate-fade-in relative flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-50 p-8 flex justify-between items-start z-10">
+        {/* Header - Fixed with correct rounding */}
+        <div className="bg-white/80 backdrop-blur-md border-b border-slate-50 p-8 flex justify-between items-start z-10 rounded-t-[40px]">
           <div>
             <p className="text-emerald-600 font-black text-[10px] mb-2 uppercase tracking-[0.2em]">Team Member</p>
             <h2 className="text-4xl font-black text-slate-900 tracking-tighter">{member.name}</h2>
@@ -29,14 +29,15 @@ export default function TeamMemberModal({ member, onClose, onChat }) {
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 hover:text-emerald-600 transition-colors"
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-900 text-white hover:bg-emerald-500 transition-all z-20 shadow-lg"
+            aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-10 space-y-10">
+        {/* Scrollable Content Container */}
+        <div className="flex-1 overflow-y-auto p-10 space-y-10">
           {/* Service Info */}
           <div className="flex flex-col md:flex-row items-start gap-8">
             <div className="w-20 h-20 bg-emerald-50 rounded-3xl flex items-center justify-center text-emerald-500 flex-shrink-0">

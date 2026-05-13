@@ -42,9 +42,10 @@ export default function ContactModal({ isOpen, onClose }) {
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:text-emerald-500 hover:bg-emerald-50 transition-all z-20"
+          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-emerald-500 transition-all z-30 shadow-lg"
+          aria-label="Close modal"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
 
         {isSuccess ? (
