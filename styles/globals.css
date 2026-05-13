@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mint: #10b981;
+  --mint-light: #ecfdf5;
+  --mint-dark: #064e3b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #1e293b;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 10px;
+}
+
+/* Text Selection */
+::selection {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utility Classes */
+.container-custom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-glow-mint {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Card Style - Mint Background */
+.card-mint {
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+  transition: all 0.3s ease;
+}
+
+.card-mint:hover {
+  background: #dcfce7;
+  border-color: #10b981;
+  transform: translateY(-5px);
+}
+
+/* CRYSTAL TRANSPARENT BUTTONS - ROUND SHAPE */
+button, .btn-crystal {
+  @apply rounded-full px-8 py-3 transition-all duration-300 font-bold tracking-widest uppercase text-[11px] flex items-center justify-center gap-2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #064e3b;
+}
+
+button:hover, .btn-crystal:hover {
+  background: #10b981;
+  border-color: #10b981;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Primary Button Override if needed */
+.btn-primary {
+  background: #10b981;
+  border-color: #10b981;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background: #059669;
+  box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
+}
+
+/* Secondary Button Override */
+.btn-secondary {
+  background: transparent;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* Base Styles */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem !important; }
+  h2 { font-size: 2.25rem !important; }
+  .container-custom { padding: 0 1.5rem; }
+}

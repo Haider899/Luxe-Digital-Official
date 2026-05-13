@@ -1,0 +1,112 @@
+import { useState, useEffect } from 'react';
+import { X, ExternalLink, Github, Linkedin } from 'lucide-react';
+import { services } from './Services';
+
+export default function TeamMemberModal({ member, onClose }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    if (!isOpen) onClose();
+  }, [isOpen, onClose]);
+
+  const serviceData = services.find(s => s.title === services[member.serviceIndex]?.title) || services[0];
+
+  return (
+    <div
+      className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={() => setIsOpen(false)}
+    >
+      <div
+        className="bg-white border border-slate-100 rounded-[40px] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-50 p-8 flex justify-between items-start z-10">
+          <div>
+            <p className="text-emerald-600 font-black text-[10px] mb-2 uppercase tracking-[0.2em]">Team Member</p>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter">{member.name}</h2>
+            <p className="text-slate-500 font-bold mt-2 uppercase text-xs tracking-widest">{member.role}</p>
+          </div>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-400 hover:text-emerald-600 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-10 space-y-10">
+          {/* Service Info */}
+          <div className="flex flex-col md:flex-row items-start gap-8">
+            <div className="w-20 h-20 bg-emerald-50 rounded-3xl flex items-center justify-center text-emerald-500 flex-shrink-0">
+              <serviceData.icon className="w-10 h-10" />
+            </div>
+            <div>
+              <h3 className="text-3xl font-black mb-4 text-slate-900">{serviceData.title}</h3>
+              <p className="text-slate-600 leading-relaxed font-medium">{serviceData.description}</p>
+            </div>
+          </div>
+
+          {/* Details Box */}
+          <div className="bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8">
+            <p className="text-slate-700 leading-relaxed font-medium">
+              Leveraging premium expertise in {serviceData.title.toLowerCase()} to deliver measurable business growth and high-end visual experiences.
+            </p>
+          </div>
+
+          {/* Portfolio Links */}
+          {(member.portfolio || (member.social && (member.social.github || member.social.linkedin))) && (
+            <div className="flex flex-wrap gap-4">
+              {member.portfolio && (
+                <a
+                  href={member.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-emerald-50 !text-emerald-700 !border-emerald-200"
+                >
+                  <ExternalLink className="w-4 h-4" /> Portfolio
+                </a>
+              )}
+              {member.social?.github && (
+                <a
+                  href={member.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-slate-50 !text-slate-600 !border-slate-200"
+                >
+                  <Github className="w-4 h-4" /> GitHub
+                </a>
+              )}
+              {member.social?.linkedin && (
+                <a
+                  href={member.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-blue-50 !text-blue-600 !border-blue-200"
+                >
+                  <Linkedin className="w-4 h-4" /> LinkedIn
+                </a>
+              )}
+            </div>
+          )}
+
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-50">
+            <button className="btn-crystal btn-primary flex-1 !py-5">
+              Let's Chat
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="btn-crystal flex-1 !py-5"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
