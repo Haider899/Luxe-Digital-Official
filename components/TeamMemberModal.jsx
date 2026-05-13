@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { X, ExternalLink, Github, Linkedin } from 'lucide-react';
+import { X, ExternalLink, Github, Linkedin, Facebook } from 'lucide-react';
 import { services } from './Services';
 
-export default function TeamMemberModal({ member, onClose }) {
+export default function TeamMemberModal({ member, onClose, onChat }) {
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
@@ -51,12 +51,47 @@ export default function TeamMemberModal({ member, onClose }) {
           {/* Details Box */}
           <div className="bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8">
             <p className="text-slate-700 leading-relaxed font-medium">
-              Leveraging premium expertise in {serviceData.title.toLowerCase()} to deliver measurable business growth and high-end visual experiences.
+              {member.description || `Leveraging premium expertise in ${serviceData.title.toLowerCase()} to deliver measurable business growth and high-end visual experiences.`}
             </p>
           </div>
 
+          {/* Categorized Skills Section */}
+          {member.categorizedSkills ? (
+            <div className="space-y-8">
+              {member.categorizedSkills.map((cat, idx) => (
+                <div key={idx} className="space-y-4">
+                  <h4 className="font-bold text-emerald-600 uppercase tracking-widest text-[10px] flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-emerald-200"></span>
+                    {cat.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, i) => (
+                      <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-full text-sm font-medium border border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/50 transition-all cursor-default">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Legacy Skills Section */
+            member.skills && member.skills.length > 0 && (
+              <div className="space-y-4">
+                <h4 className="font-bold text-slate-400 uppercase tracking-widest text-xs">Skills & Expertise</h4>
+                <div className="flex flex-wrap gap-2">
+                  {member.skills.map((skill, i) => (
+                    <span key={i} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-full text-sm font-medium border border-slate-100">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          )}
+
           {/* Portfolio Links */}
-          {(member.portfolio || (member.social && (member.social.github || member.social.linkedin))) && (
+          {(member.portfolio || (member.social && (member.social.github || member.social.linkedin || member.social.facebook))) && (
             <div className="flex flex-wrap gap-4">
               {member.portfolio && (
                 <a
@@ -88,13 +123,26 @@ export default function TeamMemberModal({ member, onClose }) {
                   <Linkedin className="w-4 h-4" /> LinkedIn
                 </a>
               )}
+              {member.social?.facebook && (
+                <a
+                  href={member.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-blue-50 !text-blue-600 !border-blue-200"
+                >
+                  <Facebook className="w-4 h-4" /> Facebook
+                </a>
+              )}
             </div>
           )}
 
 
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-50">
-            <button className="btn-crystal btn-primary flex-1 !py-5">
+            <button 
+              onClick={onChat}
+              className="btn-crystal btn-primary flex-1 !py-5"
+            >
               Let's Chat
             </button>
             <button

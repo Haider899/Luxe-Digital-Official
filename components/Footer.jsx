@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Linkedin, Instagram, Github, Phone, MapPin, Facebook, Twitter, Music } from 'lucide-react';
+import PolicyModal from './PolicyModal';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [activePolicy, setActivePolicy] = useState(null);
 
   const socials = [
     { Icon: Facebook, href: 'https://www.facebook.com/share/1J1Yix7evh/' },
@@ -18,9 +21,20 @@ export default function Footer() {
     { Icon: Linkedin, href: '#' },
   ];
 
+  const openPolicy = (type) => (e) => {
+    e.preventDefault();
+    setActivePolicy(type);
+  };
+
 
   return (
     <footer className="bg-white pt-24 pb-12 border-t border-slate-100">
+      <PolicyModal 
+        isOpen={!!activePolicy} 
+        type={activePolicy} 
+        onClose={() => setActivePolicy(null)} 
+      />
+
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           {/* Brand & Mission */}
@@ -63,7 +77,12 @@ export default function Footer() {
             <ul className="space-y-4">
               {['About Us', 'Our Process', 'Case Studies', 'Expert Team', 'Privacy Policy', 'Contact Us'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-slate-500 hover:text-emerald-600 text-sm transition-colors">{link}</a>
+                  <button 
+                    onClick={link === 'Privacy Policy' ? openPolicy('Privacy') : undefined}
+                    className="text-slate-500 hover:text-emerald-600 text-sm transition-colors text-left"
+                  >
+                    {link}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -102,14 +121,15 @@ export default function Footer() {
             © {currentYear} Luxe Digital. All rights reserved.
           </p>
           <div className="flex gap-8 text-xs text-slate-400 font-bold uppercase tracking-widest">
-            <a href="#" className="hover:text-emerald-600 transition-colors">Terms</a>
-            <a href="#" className="hover:text-emerald-600 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-emerald-600 transition-colors">Cookie Policy</a>
+            <button onClick={openPolicy('Terms')} className="hover:text-emerald-600 transition-colors">Terms</button>
+            <button onClick={openPolicy('Privacy')} className="hover:text-emerald-600 transition-colors">Privacy</button>
+            <button onClick={openPolicy('Cookie Policy')} className="hover:text-emerald-600 transition-colors">Cookie Policy</button>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
 
 

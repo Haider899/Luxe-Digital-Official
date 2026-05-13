@@ -4,9 +4,9 @@
   "description": "Luxe Digital - Professional Creative Agency Website",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
+    "build": "set NODE_OPTIONS='--max-old-space-size=8192' && next build",
+    "start": "set NODE_OPTIONS='--max-old-space-size=8192' && next start",
     "lint": "next lint",
     "export": "next export"
   },

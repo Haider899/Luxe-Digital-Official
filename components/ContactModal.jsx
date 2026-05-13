@@ -42,7 +42,7 @@ export default function ContactModal({ isOpen, onClose }) {
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 transition-all z-10"
+          className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:text-emerald-500 hover:bg-emerald-50 transition-all z-20"
         >
           <X className="w-6 h-6" />
         </button>
@@ -66,7 +66,7 @@ export default function ContactModal({ isOpen, onClose }) {
               <div className="grid grid-cols-1 gap-6">
                 {/* Name */}
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 ml-4">Full Name</label>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 mb-2 ml-4">Full Name</label>
                   <input 
                     required
                     type="text" 
@@ -77,7 +77,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 ml-4">Email Address</label>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 mb-2 ml-4">Email Address</label>
                   <input 
                     required
                     type="email" 
@@ -88,7 +88,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
                 {/* Service Dropdown */}
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 ml-4">Select Service</label>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 mb-2 ml-4">Select Service</label>
                   <select 
                     required
                     className="w-full px-6 py-4 rounded-full bg-slate-50 border-none focus:ring-2 focus:ring-emerald-500/20 text-slate-900 font-semibold transition-all outline-none appearance-none cursor-pointer"
@@ -106,7 +106,7 @@ export default function ContactModal({ isOpen, onClose }) {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 ml-4">Project Brief</label>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 mb-2 ml-4">Project Brief</label>
                   <textarea 
                     rows="3"
                     placeholder="Tell us a bit about your vision..."

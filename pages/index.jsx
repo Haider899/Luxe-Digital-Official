@@ -41,7 +41,7 @@ export default function Home() {
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
           <Services />
-          <Team />
+          <Team onStartProject={openContactModal} />
           <FAQ />
           <CTA onStartProject={openContactModal} />
         </div>
