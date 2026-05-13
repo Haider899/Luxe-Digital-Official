@@ -132,11 +132,8 @@ const teamMembers = [
       {
         category: 'Digital Content',
         skills: [
-          'SEO Copywriting',
           'Email Marketing',
-          'Ad Copy (Meta/Google)',
-          'Video Scriptwriting',
-          'Ghostwriting'
+          'Ad Copy (Meta/Google)'
         ]
       }
     ],
