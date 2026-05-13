@@ -12,12 +12,19 @@ import Footer from '../components/Footer';
 import FAQ from '../components/FAQ';
 import ContactModal from '../components/ContactModal';
 import ParticleBackground from '../components/ParticleBackground';
+import TeamMemberModal from '../components/TeamMemberModal';
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [selectedTeamMember, setSelectedTeamMember] = useState(null);
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
+
+  const handleTeamMemberChat = () => {
+    setSelectedTeamMember(null);
+    openContactModal();
+  };
 
   return (
     <>
@@ -43,6 +50,15 @@ export default function Home() {
           onClose={closeContactModal} 
         />
 
+        {/* Team Member Modal - Rendered at root for correct stacking context */}
+        {selectedTeamMember && (
+          <TeamMemberModal 
+            member={selectedTeamMember} 
+            onClose={() => setSelectedTeamMember(null)}
+            onChat={handleTeamMemberChat}
+          />
+        )}
+
         {/* Navigation */}
         <Navigation onStartProject={openContactModal} />
 
@@ -51,7 +67,10 @@ export default function Home() {
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
           <Services />
-          <Team onStartProject={openContactModal} />
+          <Team 
+            onStartProject={openContactModal} 
+            onViewProfile={(member) => setSelectedTeamMember(member)}
+          />
           <Reviews />
           <FAQ />
           <CTA onStartProject={openContactModal} />
