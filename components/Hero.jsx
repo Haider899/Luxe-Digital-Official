@@ -59,7 +59,7 @@ export default function Hero({ onStartProject }) {
             </span>
           </motion.div>
 
-          <div className="h-[220px] md:h-[280px] flex items-center">
+          <div className="flex items-center mb-10">
             <AnimatePresence mode="wait">
               <motion.h1 
                 key={index}
@@ -67,7 +67,7 @@ export default function Hero({ onStartProject }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
                 transition={{ duration: 0.8, ease: "circOut" }}
-                className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-slate-950"
+                className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1] text-slate-950"
               >
                 {headlines[index].main} <br />
                 <span className="text-emerald-500">{headlines[index].accent}</span> <br />
@@ -80,7 +80,7 @@ export default function Hero({ onStartProject }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-slate-600 max-w-xl mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-slate-600 max-w-xl mb-12 leading-relaxed relative z-20"
           >
             Luxe Digital elevates modern brands through high-end web development, cinematic video, and data-driven marketing ecosystems.
           </motion.p>

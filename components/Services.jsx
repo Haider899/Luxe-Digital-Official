@@ -6,7 +6,6 @@ export const services = [
   {
     icon: Video,
     title: 'Visual Storytelling',
-    expert: 'Muhammad Yasir',
     description: 'High-end cinematic video production and motion graphics that captivate and convert.',
     color: 'from-emerald-500 to-teal-600',
     size: 'lg'
@@ -14,7 +13,6 @@ export const services = [
   {
     icon: Code,
     title: 'Full Stack Dev',
-    expert: 'Usama Haider',
     description: 'Bespoke web applications built with Next.js 15, focus on performance and security.',
     color: 'from-blue-500 to-indigo-600',
     size: 'md'
@@ -22,7 +20,6 @@ export const services = [
   {
     icon: Megaphone,
     title: 'Growth Marketing',
-    expert: 'Muqaddas Khan',
     description: 'Data-driven Meta & Google Ads strategies to scale your business exponentially.',
     color: 'from-amber-500 to-orange-600',
     size: 'md'
@@ -30,7 +27,6 @@ export const services = [
   {
     icon: Palette,
     title: 'Brand Identity',
-    expert: 'Farhan Khan',
     description: 'Strategic UI/UX and graphic design that defines industry-leading brands.',
     color: 'from-purple-500 to-pink-600',
     size: 'md'
@@ -38,7 +34,6 @@ export const services = [
   {
     icon: Pen,
     title: 'Premium Copy',
-    expert: 'Liaquat Ali',
     description: 'Compelling narratives and high-conversion copy for the modern digital era.',
     color: 'from-rose-500 to-red-600',
     size: 'md'
@@ -46,7 +41,6 @@ export const services = [
   {
     icon: Mic,
     title: 'Voice Artistry',
-    expert: 'Haleema Sadia',
     description: 'Professional vocal performances for commercials, narration, and storytelling.',
     color: 'from-cyan-500 to-blue-600',
     size: 'md'
@@ -102,9 +96,6 @@ export default function Services() {
                 <div className="relative z-10">
                   <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                     <service.icon className="w-8 h-8" />
-                  </div>
-                  <div className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-2 opacity-60 group-hover:opacity-100 transition-all">
-                    Lead Expert: {service.expert}
                   </div>
                   <h3 className="text-3xl font-black mb-4 text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">{service.title}</h3>
                   <p className="text-slate-500 font-medium leading-relaxed mb-8 max-w-sm">
