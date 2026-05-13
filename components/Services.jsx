@@ -1,114 +1,169 @@
 import { Video, Pen, Code, Palette, Megaphone, Mic, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import TiltCard from './TiltCard';
 
 export const services = [
   {
     icon: Video,
-    title: 'Video Solutions',
+    title: 'Visual Storytelling',
     expert: 'Muhammad Yasir',
-    description: 'Cinematic video editing and high-end motion graphics designed to capture attention and elevate your brand storytelling.',
-    link: '#contact'
+    description: 'High-end cinematic video production and motion graphics that captivate and convert.',
+    color: 'from-emerald-500 to-teal-600',
+    size: 'lg'
   },
   {
     icon: Code,
     title: 'Full Stack Dev',
     expert: 'Usama Haider',
-    description: 'Secure, scalable, and modern web applications built with the latest technologies to streamline your digital operations.',
-    link: '#contact'
+    description: 'Bespoke web applications built with Next.js 15, focus on performance and security.',
+    color: 'from-blue-500 to-indigo-600',
+    size: 'md'
   },
   {
     icon: Megaphone,
-    title: 'Meta Advertising',
+    title: 'Growth Marketing',
     expert: 'Muqaddas Khan',
-    description: 'Data-driven social media campaigns and performance marketing strategies that deliver measurable ROI and growth.',
-    link: '#contact'
+    description: 'Data-driven Meta & Google Ads strategies to scale your business exponentially.',
+    color: 'from-amber-500 to-orange-600',
+    size: 'md'
   },
   {
     icon: Palette,
     title: 'Brand Identity',
     expert: 'Farhan Khan',
-    description: 'Strategic visual branding and UI/UX design that creates a distinctive and premium presence in your industry.',
-    link: '#contact'
+    description: 'Strategic UI/UX and graphic design that defines industry-leading brands.',
+    color: 'from-purple-500 to-pink-600',
+    size: 'md'
   },
   {
     icon: Pen,
-    title: 'Content Strategy',
+    title: 'Premium Copy',
     expert: 'Liaquat Ali',
-    description: 'Psychology-driven copywriting and narrative strategies that convert audiences into loyal brand advocates.',
-    link: '#contact'
+    description: 'Compelling narratives and high-conversion copy for the modern digital era.',
+    color: 'from-rose-500 to-red-600',
+    size: 'md'
   },
   {
     icon: Mic,
-    title: 'Voice & Audio',
+    title: 'Voice Artistry',
     expert: 'Haleema Sadia',
-    description: 'Professional vocal performances and community-focused social media management for authentic communication.',
-    link: '#contact'
+    description: 'Professional vocal performances for commercials, narration, and storytelling.',
+    color: 'from-cyan-500 to-blue-600',
+    size: 'md'
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-24 px-6 bg-white">
+    <section id="services" className="relative py-32 px-6 bg-white overflow-hidden">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-black mb-4 text-slate-900">
-            Specialised <span className="text-emerald-500">Solutions</span> Designed for Results
-          </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Luxe Digital supports organisations across multiple industries by delivering secure, scalable, and cost-efficient digital solutions.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+          <div className="max-w-2xl">
+            <motion.h4 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-emerald-600 font-black text-[10px] mb-4 uppercase tracking-[0.3em]"
+            >
+              Our Core Expertise
+            </motion.h4>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-5xl lg:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter"
+            >
+              Specialised <span className="text-emerald-500">Solutions</span> <br />
+              For Results.
+            </motion.h2>
+          </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-slate-500 font-bold max-w-sm text-sm uppercase tracking-widest leading-relaxed"
+          >
+            Luxe Digital delivers secure, scalable, and cost-efficient ecosystems designed to dominate.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => (
-            <div 
+            <TiltCard 
               key={idx} 
-              className="group p-10 bg-white border border-slate-100 rounded-[40px] hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
+              className={service.size === 'lg' ? 'md:col-span-2 lg:col-span-2' : ''}
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm relative z-10">
-                <service.icon className="w-8 h-8" />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                  Expert: {service.expert}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="h-full glass-premium p-10 rounded-[40px] border border-slate-100 shadow-xl group cursor-pointer relative overflow-hidden flex flex-col justify-between min-h-[400px]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                    <service.icon className="w-8 h-8" />
+                  </div>
+                  <div className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-2 opacity-60 group-hover:opacity-100 transition-all">
+                    Lead Expert: {service.expert}
+                  </div>
+                  <h3 className="text-3xl font-black mb-4 text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">{service.title}</h3>
+                  <p className="text-slate-500 font-medium leading-relaxed mb-8 max-w-sm">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-black mb-4 text-slate-900">
-                  {service.title}
-                </h3>
-                <p className="text-slate-500 font-medium leading-relaxed mb-8">
-                  {service.description}
-                </p>
-                <div className="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-widest text-xs">
+
+                <div className="flex items-center gap-2 text-slate-900 font-black text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
                   <span className="w-8 h-[2px] bg-emerald-500"></span>
-                  Explore Solution
+                  Explore Solution <ArrowRight className="w-4 h-4" />
                 </div>
-              </div>
-            </div>
+
+                {/* Decorative background number */}
+                <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-slate-900/[0.02] pointer-events-none select-none group-hover:text-emerald-500/[0.05] transition-colors">
+                  0{idx + 1}
+                </div>
+              </motion.div>
+            </TiltCard>
           ))}
         </div>
 
-        {/* Industry Support Section */}
-        <div className="mt-32 pt-24 border-t border-slate-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h3 className="text-3xl lg:text-4xl font-black mb-6 text-slate-900">Supporting Businesses Across <span className="text-emerald-500">Multiple Industries</span></h3>
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                We support organisations across multiple industries by delivering secure, scalable, and cost-efficient digital solutions designed to meet industry-specific needs.
+        {/* Industry Support Section - Redesigned */}
+        <div className="mt-40 pt-24 border-t border-slate-100 relative">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-[1px] bg-emerald-500" />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-4xl lg:text-5xl font-black mb-8 text-slate-900 tracking-tighter">
+                Fueling Growth Across <span className="text-emerald-500">Global Industries</span>
+              </h3>
+              <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
+                Our ecosystem is designed to solve industry-specific challenges, delivering secure and cost-efficient results for leaders worldwide.
               </p>
-              <button className="btn-crystal btn-primary !px-10 !py-4">
-                Explore Industry Solutions
-              </button>
+              <div className="flex flex-wrap gap-4">
+                <button className="btn-crystal btn-primary !px-10 !py-5 shadow-emerald-500/20 shadow-xl">
+                  Get Industry Strategy
+                </button>
+              </div>
+            </motion.div>
 
-            </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                'E-commerce', 'Healthcare', 'Engineering', 'Accountants', 'Content Creators', 'Legal Services'
+                'E-commerce', 'Healthcare', 'Engineering', 'Accounting', 'Content Creation', 'Legal Services'
               ].map((industry, i) => (
-                <div key={i} className="p-6 bg-emerald-50/50 border border-emerald-100 rounded-xl font-bold text-center text-slate-700 hover:border-emerald-500 hover:text-emerald-600 transition-all cursor-default">
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -5, borderColor: '#10b981', backgroundColor: '#ecfdf5' }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-8 bg-white border border-slate-100 rounded-3xl font-black text-xs uppercase tracking-widest text-center text-slate-700 shadow-sm transition-all cursor-default"
+                >
                   {industry}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
