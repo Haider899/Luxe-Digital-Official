@@ -28,7 +28,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="bg-white pt-24 pb-12 border-t border-slate-100">
+    <footer className="bg-white pt-16 pb-8 border-t border-slate-100">
       <PolicyModal 
         isOpen={!!activePolicy} 
         type={activePolicy} 
@@ -36,7 +36,7 @@ export default function Footer() {
       />
 
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand & Mission */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
@@ -74,8 +74,8 @@ export default function Footer() {
           {/* Company Column */}
           <div>
             <h4 className="text-slate-900 font-black text-sm uppercase tracking-widest mb-8">Company</h4>
-            <ul className="space-y-4">
-              {['About Us', 'Our Process', 'Case Studies', 'Expert Team', 'Privacy Policy', 'Contact Us'].map((link) => (
+            <ul className="space-y-3">
+              {['About Us', 'Our Process', 'Case Studies', 'Expert Team', 'Contact Us'].map((link) => (
                 <li key={link}>
                   <button 
                     onClick={link === 'Privacy Policy' ? openPolicy('Privacy') : undefined}
@@ -91,7 +91,7 @@ export default function Footer() {
           {/* Contact & Support */}
           <div>
             <h4 className="text-slate-900 font-black text-sm uppercase tracking-widest mb-8">Let's Chat</h4>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a href="tel:+923236804540" className="flex items-center gap-4 text-slate-500 hover:text-emerald-600 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500">
                   <Phone className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function Footer() {
 
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">
             © {currentYear} Luxe Digital. All rights reserved.
           </p>

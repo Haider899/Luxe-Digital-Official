@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
+import Reviews from '../components/Reviews';
 import Team from '../components/Team';
 import WhyUs from '../components/WhyUs';
 import CTA from '../components/CTA';
@@ -41,6 +42,7 @@ export default function Home() {
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
           <Services />
+          <Reviews />
           <Team onStartProject={openContactModal} />
           <FAQ />
           <CTA onStartProject={openContactModal} />

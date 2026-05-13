@@ -34,12 +34,12 @@ export default function Hero({ onStartProject }) {
           >
             View Solutions
           </button>
-          <button 
-            onClick={onStartProject}
+          <a 
+            href="#services"
             className="btn-crystal !px-12 !py-5"
           >
             Explore Our Services <ChevronRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
 

@@ -4,37 +4,43 @@ export const services = [
   {
     icon: Video,
     title: 'Video Solutions',
-    description: 'Protect your brand with robust high-end video editing and cinematic motion graphics that defend against mediocrity.',
+    expert: 'Muhammad Yasir',
+    description: 'Cinematic video editing and high-end motion graphics designed to capture attention and elevate your brand storytelling.',
     link: '#contact'
   },
   {
     icon: Code,
-    title: 'Full Stack Development',
-    description: 'Unlock the full potential of your brand with custom web applications designed to streamline operations and scale.',
+    title: 'Full Stack Dev',
+    expert: 'Usama Haider',
+    description: 'Secure, scalable, and modern web applications built with the latest technologies to streamline your digital operations.',
     link: '#contact'
   },
   {
     icon: Megaphone,
-    title: 'Marketing Strategy',
-    description: 'Boost efficiency and growth with data-driven meta campaigns and organic strategies that empower your brand.',
+    title: 'Meta Advertising',
+    expert: 'Muqaddas Khan',
+    description: 'Data-driven social media campaigns and performance marketing strategies that deliver measurable ROI and growth.',
     link: '#contact'
   },
   {
     icon: Palette,
-    title: 'Visual Identity',
-    description: 'Create a distinctive brand presence with premium UI/UX and graphic designs tailored to your unique business goals.',
+    title: 'Brand Identity',
+    expert: 'Farhan Khan',
+    description: 'Strategic visual branding and UI/UX design that creates a distinctive and premium presence in your industry.',
     link: '#contact'
   },
   {
     icon: Pen,
-    title: 'Content Excellence',
-    description: 'Psychology-driven copywriting that simplifies complex messages and unlocks greater audience engagement.',
+    title: 'Content Strategy',
+    expert: 'Liaquat Ali',
+    description: 'Psychology-driven copywriting and narrative strategies that convert audiences into loyal brand advocates.',
     link: '#contact'
   },
   {
     icon: Mic,
     title: 'Voice & Audio',
-    description: 'Professional voice-over services that add authenticity and personality to your modern business communication.',
+    expert: 'Haleema Sadia',
+    description: 'Professional vocal performances and community-focused social media management for authentic communication.',
     link: '#contact'
   },
 ];
@@ -56,23 +62,29 @@ export default function Services() {
           {services.map((service, idx) => (
             <div 
               key={idx} 
-              className="group p-10 card-mint rounded-2xl flex flex-col h-full"
+              className="group p-10 bg-white border border-slate-100 rounded-[40px] hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 flex flex-col h-full relative overflow-hidden"
             >
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-emerald-500 mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all shadow-sm">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm relative z-10">
                 <service.icon className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-slate-900 group-hover:text-emerald-700 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-slate-600 leading-relaxed mb-8 flex-grow">
-                {service.description}
-              </p>
-              <a 
-                href={service.link}
-                className="inline-flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-widest text-xs group-hover:translate-x-2 transition-transform"
-              >
-                View More <ArrowRight className="w-4 h-4" />
-              </a>
+              
+              <div className="relative z-10">
+                <div className="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-2 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                  Expert: {service.expert}
+                </div>
+                <h3 className="text-2xl font-black mb-4 text-slate-900">
+                  {service.title}
+                </h3>
+                <p className="text-slate-500 font-medium leading-relaxed mb-8">
+                  {service.description}
+                </p>
+                <div className="flex items-center gap-2 text-slate-900 font-bold uppercase tracking-widest text-xs">
+                  <span className="w-8 h-[2px] bg-emerald-500"></span>
+                  Explore Solution
+                </div>
+              </div>
             </div>
           ))}
         </div>

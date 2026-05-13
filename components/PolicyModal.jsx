@@ -74,9 +74,10 @@ export default function PolicyModal({ type, isOpen, onClose }) {
           <h2 className="text-3xl font-black text-slate-900 tracking-tighter">{activePolicy.title}</h2>
           <button 
             onClick={onClose}
-            className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 hover:text-emerald-500 hover:bg-emerald-50 transition-all"
+            className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-emerald-500 transition-all shadow-lg"
+            aria-label="Close modal"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
