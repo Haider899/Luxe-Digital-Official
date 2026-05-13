@@ -1,71 +1,100 @@
+import { CheckCircle2, TrendingUp, Users, Zap, ShieldCheck, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Shield, Zap, Target, Users, Award, TrendingUp } from 'lucide-react';
+
+const features = [
+  {
+    title: 'Expert Led',
+    desc: 'Led by industry veterans with deep expertise in their respective niches.',
+    icon: Users,
+  },
+  {
+    title: 'High Performance',
+    desc: 'Optimised for speed, security, and conversion from the ground up.',
+    icon: Zap,
+  },
+  {
+    title: 'Secure by Design',
+    desc: 'Advanced cybersecurity measures integrated into every digital asset.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Global Ready',
+    desc: 'Strategically designed to scale your business across international markets.',
+    icon: Globe,
+  },
+];
 
 export default function WhyUs({ onStartProject }) {
-  const benefits = [
-    {
-      icon: Users,
-      title: 'Expert Team',
-      desc: 'Our specialists deliver expert web, design, and marketing solutions, helping businesses build scalable digital environments.',
-    },
-    {
-      icon: Shield,
-      title: 'Secure Solutions',
-      desc: 'We take a security-first approach, ensuring your digital assets are protected with robust development standards and best practices.',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Real Business Value',
-      desc: 'Our team focuses on optimization and performance, ensuring your digital investment delivers measurable results.',
-    },
-  ];
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
 
   return (
-    <section id="why-us" className="relative py-24 px-6 bg-slate-50">
+    <section id="why-us" className="py-32 px-6 bg-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/30 rounded-full blur-[120px] -z-10" />
+      
       <div className="container-custom">
-        {/* Top Section - Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-24">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-black mb-6 leading-tight text-slate-950">
-              Proven Digital Expertise <br />
-              <span className="text-emerald-500">Across The Globe</span>
+            <h4 className="text-emerald-600 font-black text-[10px] mb-4 uppercase tracking-[0.3em]">The Luxe Advantage</h4>
+            <h2 className="text-5xl lg:text-7xl font-black text-slate-900 leading-[0.9] mb-8 tracking-tighter">
+              Why Leaders <br />
+              <span className="text-emerald-500">Choose Luxe.</span>
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              Luxe Digital delivers expert creative and technical services, including full-stack development, brand identity, and performance marketing. As your strategic partner, we support brands with tailored solutions designed to align with business goals and drive secure, scalable growth.
+            <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
+              We don't just build websites; we engineer success. Our multidisciplinary team combines visual artistry with technical precision.
             </p>
-            <button 
-              onClick={onStartProject}
-              className="btn-crystal !px-8 !py-4"
-            >
-              Explore Our Services
-            </button>
+            <div className="space-y-4">
+              {['End-to-end Project Management', '24/7 Security Monitoring', 'Weekly Growth Reports'].map((point, i) => (
+                <div key={i} className="flex items-center gap-3 text-slate-700 font-bold">
+                  <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                  {point}
+                </div>
+              ))}
+            </div>
           </motion.div>
-          
-          <div className="grid grid-cols-1 gap-6">
-            {benefits.map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex gap-6 p-8 rounded-2xl bg-white border border-slate-100 hover:border-emerald-500/20 transition-all group shadow-sm"
+
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                variants={item}
+                whileHover={{ y: -5, borderColor: '#10b981' }}
+                className="p-10 glass-premium border border-slate-100 rounded-[40px] hover:shadow-2xl transition-all duration-500 group"
               >
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all">
-                  <item.icon className="w-7 h-7" />
+                <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-500">
+                  <feature.icon className="w-7 h-7" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-black mb-2 text-slate-900">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
+                <h3 className="text-2xl font-black mb-4 text-slate-900">{feature.title}</h3>
+                <p className="text-slate-500 font-medium leading-relaxed text-sm">
+                  {feature.desc}
+                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Banner */}
