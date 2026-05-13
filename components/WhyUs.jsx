@@ -1,5 +1,5 @@
+import { CheckCircle2, TrendingUp, Users, Zap, ShieldCheck, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Shield, Zap, Target, Users, Award, TrendingUp } from 'lucide-react';
 
 const features = [
   {

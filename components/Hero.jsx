@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronRight, Play } from 'lucide-react';
+import { ArrowRight, ChevronRight, Play, Palette, Code } from 'lucide-react';
 
 const headlines = [
   { main: "Smarter", accent: "Digital Solutions", end: "For Growing Brands" },
