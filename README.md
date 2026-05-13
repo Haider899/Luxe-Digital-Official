@@ -160,4 +160,4 @@ For support and customization:
 
 ---
 
-**Built with ❤️ by Luxe Digital**
+**Built with ❤️ by Haider**
