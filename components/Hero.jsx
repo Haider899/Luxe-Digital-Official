@@ -1,8 +1,23 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
 
+const headlines = [
+  { main: "Smarter", accent: "Digital Solutions", end: "For Growing Brands" },
+  { main: "Elevate", accent: "Your Vision", end: "With Premium Design" },
+  { main: "Scale", accent: "Your Business", end: "With Expert Strategy" },
+  { main: "Secure", accent: "Your Future", end: "With Modern Tech" }
+];
+
 export default function Hero({ onStartProject }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % headlines.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden bg-white">
       {/* Decorative Orbs - Animated */}
@@ -43,14 +58,20 @@ export default function Hero({ onStartProject }) {
           </span>
         </motion.div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-[0.9] max-w-5xl mx-auto text-slate-950"
-        >
-          Smarter <span className="text-emerald-500">Digital Solutions</span> For Growing Brands
-        </motion.h1>
+        <div className="h-[200px] md:h-[250px] lg:h-[300px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.h1 
+              key={index}
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+              transition={{ duration: 0.8, ease: "circOut" }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] max-w-5xl mx-auto text-slate-950"
+            >
+              {headlines[index].main} <span className="text-emerald-500">{headlines[index].accent}</span> <br className="hidden md:block" /> {headlines[index].end}
+            </motion.h1>
+          </AnimatePresence>
+        </div>
 
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
