@@ -32,22 +32,22 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section id="faq" className="py-24 px-6 bg-white">
-      <div className="container-custom max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-black mb-4 text-slate-900">
+    <section id="faq" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-0 bg-white">
+      <div className="container-custom max-w-4xl w-full">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl font-black mb-3 sm:mb-4 text-slate-900 leading-tight">
             Frequently Asked <span className="text-emerald-500">Questions</span>
           </h2>
-          <p className="text-slate-600 text-lg">
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg">
             Everything you need to know about working with Luxe Digital
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className={`rounded-[40px] overflow-hidden transition-all duration-300 border ${
+              className={`rounded-[20px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden transition-all duration-300 border ${
                 openIndex === index 
                   ? 'border-emerald-500 bg-emerald-500 shadow-xl shadow-emerald-500/20' 
                   : 'border-slate-100 bg-white hover:border-emerald-200 hover:shadow-lg'

@@ -64,7 +64,7 @@ export default function Home() {
         <Navigation onStartProject={openContactModal} />
 
         {/* Main Sections */}
-        <div className="relative z-10 pt-[110px]">
+        <div className="relative z-10 pt-[80px] sm:pt-[90px] md:pt-[100px] lg:pt-[110px]">
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
           <Services onStartProject={openContactModal} />

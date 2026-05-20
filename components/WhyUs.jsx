@@ -41,30 +41,30 @@ export default function WhyUs({ onStartProject }) {
   };
 
   return (
-    <section id="why-us" className="py-32 px-6 bg-white relative overflow-hidden">
+    <section id="why-us" className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0 bg-white relative overflow-hidden">
       {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/30 rounded-full blur-[120px] -z-10" />
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] bg-blue-50/30 rounded-full blur-[80px] sm:blur-[120px] -z-10" />
       
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-24">
+      <div className="container-custom w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-24 items-center mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h4 className="text-emerald-600 font-black text-[10px] mb-4 uppercase tracking-[0.3em]">The Luxe Advantage</h4>
-            <h2 className="text-5xl lg:text-7xl font-black text-slate-900 leading-[0.9] mb-8 tracking-tighter">
+            <h4 className="text-emerald-600 font-black text-[9px] sm:text-[10px] mb-3 sm:mb-4 uppercase tracking-[0.3em]">The Luxe Advantage</h4>
+            <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-tight md:leading-[0.9] mb-6 md:mb-8 tracking-tighter">
               Why Leaders <br />
               <span className="text-emerald-500">Choose Luxe.</span>
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
+            <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed mb-8 md:mb-10 font-medium">
               We don't just build websites; we engineer success. Our multidisciplinary team combines visual artistry with technical precision.
             </p>
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {['End-to-end Project Management', '24/7 Security Monitoring', 'Weekly Growth Reports'].map((point, i) => (
-                <div key={i} className="flex items-center gap-3 text-slate-700 font-bold">
-                  <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <div key={i} className="flex items-center gap-3 text-slate-700 font-bold text-sm md:text-base">
+                  <CheckCircle2 className="w-5 sm:w-6 h-5 sm:h-6 text-emerald-500 flex-shrink-0" />
                   {point}
                 </div>
               ))}
@@ -76,7 +76,7 @@ export default function WhyUs({ onStartProject }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
           >
             {features.map((feature, idx) => (
               <motion.div

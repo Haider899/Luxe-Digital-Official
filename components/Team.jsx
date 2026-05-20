@@ -208,18 +208,18 @@ const teamMembers = [
 
 export default function Team({ onStartProject, onViewProfile }) {
   return (
-    <section id="team" className="relative py-24 px-6 bg-white overflow-hidden">
-      <div className="container-custom">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl lg:text-6xl font-black mb-4 text-slate-900">
+    <section id="team" className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-0 bg-white overflow-hidden">
+      <div className="container-custom w-full">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black mb-3 sm:mb-4 text-slate-900 leading-tight">
             Meet The <span className="text-emerald-500">Creators</span>
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Talent, passion, and expertise united to deliver excellence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {teamMembers.map((member, idx) => (
             <TeamMemberCard
               key={idx}
@@ -232,7 +232,7 @@ export default function Team({ onStartProject, onViewProfile }) {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none" />
     </section>
   );
 }

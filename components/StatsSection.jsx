@@ -104,29 +104,29 @@ const item = {
 
 export default function StatsSection() {
   return (
-    <section className="relative py-32 px-6 bg-white overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0 bg-white overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-100/30 rounded-full blur-[100px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-100/30 rounded-full blur-[100px]" />
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-emerald-100/30 rounded-full blur-[80px] sm:blur-[100px]" />
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-100/30 rounded-full blur-[80px] sm:blur-[100px]" />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 w-full">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-24"
+          className="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24 px-2 sm:px-0"
         >
-          <h4 className="text-emerald-600 font-black text-[10px] mb-4 uppercase tracking-[0.3em]">
+          <h4 className="text-emerald-600 font-black text-[9px] sm:text-[10px] mb-3 sm:mb-4 uppercase tracking-[0.3em]">
             Our Impact
           </h4>
-          <h2 className="text-5xl lg:text-7xl font-black text-slate-900 leading-[0.9] mb-6 tracking-tighter">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-tight md:leading-[0.9] mb-4 sm:mb-6 tracking-tighter">
             Driving Results <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">Globally</span>
           </h2>
-          <p className="text-slate-600 font-medium text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 font-medium text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Proven track record of transforming brands and driving measurable success across industries worldwide.
           </p>
         </motion.div>
@@ -137,7 +137,7 @@ export default function StatsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20"
         >
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
@@ -149,7 +149,7 @@ export default function StatsSection() {
                   scale: 1.05,
                   boxShadow: '0 20px 60px rgba(16, 185, 129, 0.15)'
                 }}
-                className={`relative p-10 rounded-[40px] bg-gradient-to-br ${stat.gradient} border border-white/60 glass-premium overflow-hidden group cursor-default transition-all duration-500 h-full`}
+                className={`relative p-6 sm:p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-gradient-to-br ${stat.gradient} border border-white/60 glass-premium overflow-hidden group cursor-default transition-all duration-500 h-full`}
               >
                 {/* Animated Background */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${stat.color}`} />
@@ -158,14 +158,14 @@ export default function StatsSection() {
                   {/* Icon */}
                   <motion.div 
                     whileHover={{ rotate: 12, scale: 1.1 }}
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500`}
+                    className={`w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white mb-4 sm:mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 flex-shrink-0`}
                   >
-                    <Icon className="w-8 h-8" />
+                    <Icon className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8" />
                   </motion.div>
 
                   {/* Counter */}
                   <div className="mb-2">
-                    <div className="text-5xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 leading-none">
+                    <div className="text-4xl sm:text-5xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 leading-none">
                       <AnimatedCounter 
                         end={stat.value} 
                         duration={2.5}
@@ -175,7 +175,7 @@ export default function StatsSection() {
                   </div>
 
                   {/* Label */}
-                  <p className="text-slate-700 group-hover:text-white/90 font-bold text-sm uppercase tracking-widest transition-colors duration-500">
+                  <p className="text-slate-700 group-hover:text-white/90 font-bold text-xs sm:text-sm uppercase tracking-widest transition-colors duration-500">
                     {stat.label}
                   </p>
                 </div>
@@ -193,7 +193,7 @@ export default function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative rounded-[40px] overflow-hidden group"
+          className="relative rounded-[30px] md:rounded-[40px] overflow-hidden group"
         >
           {/* Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-100" />

@@ -19,7 +19,7 @@ export default function Hero({ onStartProject }) {
     return () => clearInterval(timer);
   }, []);
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden bg-white">
+    <section className="relative min-h-screen md:min-h-[90vh] flex items-center justify-center pt-24 sm:pt-20 overflow-hidden bg-white">
       {/* Aurora Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -29,7 +29,7 @@ export default function Hero({ onStartProject }) {
             scale: [1, 1.2, 1]
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-emerald-100/40 rounded-full blur-[120px]" 
+          className="absolute -top-[20%] -left-[10%] w-[100%] sm:w-[70%] h-[70%] bg-emerald-100/40 rounded-full blur-[80px] sm:blur-[120px]" 
         />
         <motion.div 
           animate={{ 
@@ -38,28 +38,28 @@ export default function Hero({ onStartProject }) {
             scale: [1.2, 1, 1.2]
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-blue-50/40 rounded-full blur-[120px]" 
+          className="absolute -bottom-[20%] -right-[10%] w-[100%] sm:w-[70%] h-[70%] bg-blue-50/40 rounded-full blur-[80px] sm:blur-[120px]" 
         />
       </div>
 
-      <div className="container-custom relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center px-4 md:px-0">
+      <div className="container-custom relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center px-4 sm:px-6 md:px-8 lg:px-0 w-full">
         <div className="text-left">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 mb-8"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 mb-6 sm:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-[10px] font-black tracking-[0.2em] text-emerald-700 uppercase">
+            <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] text-emerald-700 uppercase">
               Global Excellence in Digital
             </span>
           </motion.div>
 
-          <div className="flex items-center mb-10">
+          <div className="flex items-center mb-8 sm:mb-10">
             <AnimatePresence mode="wait">
               <motion.h1 
                 key={index}
@@ -67,7 +67,7 @@ export default function Hero({ onStartProject }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
                 transition={{ duration: 0.8, ease: "circOut" }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[1] text-slate-950"
+                className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-tight md:leading-[1] text-slate-950"
               >
                 {headlines[index].main} <br />
                 <span className="text-emerald-500">{headlines[index].accent}</span> <br />
@@ -80,7 +80,7 @@ export default function Hero({ onStartProject }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-slate-600 max-w-xl mb-12 leading-relaxed relative z-20"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 max-w-xl mb-8 sm:mb-12 leading-relaxed relative z-20"
           >
             Luxe Digital elevates modern brands through high-end web development, cinematic video, and data-driven marketing ecosystems.
           </motion.p>
@@ -89,17 +89,17 @@ export default function Hero({ onStartProject }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col xs:flex-row items-stretch xs:items-center gap-4 sm:gap-6 w-full xs:w-auto"
           >
             <button 
               onClick={onStartProject}
-              className="btn-crystal btn-primary !px-12 !py-5 hover:scale-105 transition-transform"
+              className="btn-crystal btn-primary !px-8 sm:!px-12 !py-4 sm:!py-5 hover:scale-105 transition-transform whitespace-nowrap"
             >
               Start Project <ArrowRight className="w-4 h-4" />
             </button>
             <a 
               href="#services"
-              className="btn-crystal !px-12 !py-5 hover:scale-105 transition-transform"
+              className="btn-crystal !px-8 sm:!px-12 !py-4 sm:!py-5 hover:scale-105 transition-transform text-center"
             >
               Our Solutions
             </a>
@@ -114,28 +114,28 @@ export default function Hero({ onStartProject }) {
           className="hidden lg:block relative"
         >
           <div className="relative z-20 animate-float">
-            <div className="glass-premium p-10 rounded-[50px] border border-white/20 shadow-2xl relative overflow-hidden group">
+            <div className="glass-premium p-6 sm:p-8 md:p-10 rounded-[30px] md:rounded-[50px] border border-white/20 shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/30">
-                  <Play className="w-10 h-10 fill-current" />
+                <div className="w-16 sm:w-20 h-16 sm:h-20 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-6 sm:mb-8 shadow-lg shadow-emerald-500/30">
+                  <Play className="w-8 sm:w-10 h-8 sm:h-10 fill-current" />
                 </div>
-                <div className="text-4xl font-black text-slate-950 mb-2">150+</div>
-                <div className="text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-8">Projects Delivered</div>
+                <div className="text-3xl sm:text-4xl font-black text-slate-950 mb-2">150+</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-[0.2em] mb-6 sm:mb-8">Projects Delivered</div>
                 
-                <div className="flex -space-x-4 mb-8">
+                <div className="flex -space-x-4 mb-6 sm:mb-8">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full bg-slate-200 border-4 border-white overflow-hidden shadow-sm">
+                    <div key={i} className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-slate-200 border-4 border-white overflow-hidden shadow-sm">
                       <div className="w-full h-full bg-emerald-100" />
                     </div>
                   ))}
-                  <div className="w-12 h-12 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-emerald-500 border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">
                     +40
                   </div>
                 </div>
 
-                <div className="p-6 bg-white/50 backdrop-blur-sm rounded-3xl border border-white/50 flex items-center gap-4">
-                  <div className="w-3 h-3 bg-emerald-500 rounded-full animate-ping" />
+                <div className="p-4 sm:p-6 bg-white/50 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/50 flex items-center gap-4">
+                  <div className="w-3 h-3 bg-emerald-500 rounded-full animate-ping flex-shrink-0" />
                   <span className="text-xs font-black text-slate-800 uppercase tracking-widest">Active Growth Monitoring</span>
                 </div>
               </div>

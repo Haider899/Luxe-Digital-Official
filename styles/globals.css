@@ -101,7 +101,31 @@ h1, h2, h3, h4, h5, h6 {
 .container-custom {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-custom {
+    padding: 0 4rem;
+  }
 }
 
 .text-gradient {
@@ -166,7 +190,7 @@ button {
 
 /* CRYSTAL TRANSPARENT BUTTONS - ROUND SHAPE */
 .btn-crystal {
-  @apply rounded-full px-8 py-3 transition-all duration-300 font-bold tracking-widest uppercase text-[11px] flex items-center justify-center gap-2;
+  @apply rounded-full px-6 sm:px-8 py-3 transition-all duration-300 font-bold tracking-widest uppercase text-[10px] sm:text-[11px] flex items-center justify-center gap-2 whitespace-nowrap;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(16, 185, 129, 0.3);
