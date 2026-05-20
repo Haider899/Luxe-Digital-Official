@@ -42,7 +42,7 @@ export default function Hero({ onStartProject }) {
         />
       </div>
 
-      <div className="container-custom relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="container-custom relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center px-4 md:px-0">
         <div className="text-left">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -67,7 +67,7 @@ export default function Hero({ onStartProject }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
                 transition={{ duration: 0.8, ease: "circOut" }}
-                className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1] text-slate-950"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[1] text-slate-950"
               >
                 {headlines[index].main} <br />
                 <span className="text-emerald-500">{headlines[index].accent}</span> <br />

@@ -214,8 +214,43 @@ a {
 }
 
 /* Responsive Typography */
+@media (max-width: 1024px) {
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 2rem !important; }
+  h3 { font-size: 1.5rem !important; }
+}
+
 @media (max-width: 768px) {
-  h1 { font-size: 3rem !important; }
-  h2 { font-size: 2.25rem !important; }
-  .container-custom { padding: 0 1.5rem; }
+  h1 { font-size: 1.875rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
+  .container-custom { padding: 0 1rem; }
+  
+  /* Make buttons more mobile friendly */
+  .btn-crystal, button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1rem !important; }
+  .container-custom { padding: 0 0.75rem; }
+  
+  /* Ensure text is readable on mobile */
+  body { font-size: 14px; }
+}
+
+/* Mobile-first responsive spacing */
+@media (max-width: 768px) {
+  /* Section padding */
+  section { padding: 2rem 0 !important; }
+  
+  /* Ensure grid columns stack on mobile */
+  .grid { gap: 1rem; }
+  .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+    @apply grid-cols-1;
+  }
 }

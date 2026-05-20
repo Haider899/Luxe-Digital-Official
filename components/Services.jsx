@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Video, Pen, Code, Palette, Megaphone, Mic, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TiltCard from './TiltCard';
+import ContactModal from './ContactModal';
 
 export const services = [
   {
     icon: Video,
     title: 'Visual Storytelling',
     description: 'High-end cinematic video production and motion graphics that captivate and convert.',
+    actionLabel: 'Watch the story',
+    details: 'Cinematic brand films and motion-led narratives that engage viewers and turn interest into action.',
     color: 'from-emerald-500 to-teal-600',
     size: 'lg'
   },
@@ -14,6 +18,8 @@ export const services = [
     icon: Code,
     title: 'Full Stack Dev',
     description: 'Bespoke web applications built with Next.js 15, focus on performance and security.',
+    actionLabel: 'Explore the stack',
+    details: 'Custom Next.js apps with secure APIs, blazing speed, and scalable architecture for premium digital products.',
     color: 'from-blue-500 to-indigo-600',
     size: 'md'
   },
@@ -21,6 +27,8 @@ export const services = [
     icon: Megaphone,
     title: 'Growth Marketing',
     description: 'Data-driven Meta & Google Ads strategies to scale your business exponentially.',
+    actionLabel: 'See the campaign',
+    details: 'Targeted growth systems built to maximize revenue, customer acquisition, and return on ad spend.',
     color: 'from-amber-500 to-orange-600',
     size: 'md'
   },
@@ -28,6 +36,8 @@ export const services = [
     icon: Palette,
     title: 'Brand Identity',
     description: 'Strategic UI/UX and graphic design that defines industry-leading brands.',
+    actionLabel: 'View brand vision',
+    details: 'Purposeful design systems and identity direction that make your brand stand out in a crowded market.',
     color: 'from-purple-500 to-pink-600',
     size: 'md'
   },
@@ -35,6 +45,8 @@ export const services = [
     icon: Pen,
     title: 'Premium Copy',
     description: 'Compelling narratives and high-conversion copy for the modern digital era.',
+    actionLabel: 'Read the voice',
+    details: 'Persuasive messaging and brand storytelling crafted to convert browsers into loyal customers.',
     color: 'from-rose-500 to-red-600',
     size: 'md'
   },
@@ -42,12 +54,22 @@ export const services = [
     icon: Mic,
     title: 'Voice Artistry',
     description: 'Professional vocal performances for commercials, narration, and storytelling.',
+    actionLabel: 'Hear the tone',
+    details: 'Premium voice-over services for ads, podcasts, and branded content that bring your message to life.',
     color: 'from-cyan-500 to-blue-600',
     size: 'md'
   },
 ];
 
-export default function Services() {
+export default function Services({ onStartProject }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
   return (
     <section id="services" className="relative py-32 px-6 bg-white overflow-hidden">
       <div className="container-custom">
@@ -89,7 +111,8 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="h-full glass-premium p-10 rounded-[40px] border border-slate-100 shadow-xl group cursor-pointer relative overflow-hidden flex flex-col justify-between min-h-[400px]"
+                onClick={() => handleServiceClick(service)}
+                className="h-full glass-premium p-10 rounded-[40px] border border-slate-100 shadow-xl group cursor-pointer relative overflow-hidden flex flex-col justify-between min-h-[400px] hover:border-emerald-300 transition-colors"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
@@ -134,7 +157,10 @@ export default function Services() {
                 Our ecosystem is designed to solve industry-specific challenges, delivering secure and cost-efficient results for leaders worldwide.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="btn-crystal btn-primary !px-10 !py-5 shadow-emerald-500/20 shadow-xl">
+                <button 
+                  onClick={onStartProject}
+                  className="btn-crystal btn-primary !px-10 !py-5 shadow-emerald-500/20 shadow-xl hover:scale-105 transition-transform"
+                >
                   Get Industry Strategy
                 </button>
               </div>
@@ -160,6 +186,13 @@ export default function Services() {
           </div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        selectedService={selectedService}
+      />
     </section>
   );
 }

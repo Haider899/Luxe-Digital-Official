@@ -24,9 +24,9 @@ export default function Navigation({ onStartProject }) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Bar */}
-      <div className="hidden lg:block bg-slate-50 border-b border-slate-200 py-2">
-        <div className="container-custom flex justify-between items-center text-[10px] font-black tracking-[0.15em] text-slate-500 uppercase">
+      {/* Top Bar - Desktop Only */}
+      <div className="hidden xl:block bg-slate-50 border-b border-slate-200 py-2">
+        <div className="container-custom flex justify-between items-center text-[10px] font-black tracking-[0.15em] text-slate-500 uppercase px-4 md:px-0 flex-wrap gap-4">
           <div className="flex items-center gap-8">
             <a href="tel:+923236804540" className="flex items-center gap-2 hover:text-emerald-600 transition-colors">
               <Phone className="w-3 h-3 text-emerald-500" />
@@ -48,8 +48,8 @@ export default function Navigation({ onStartProject }) {
       </div>
 
       {/* Main Nav */}
-      <nav className={`transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3 border-b border-slate-100' : 'bg-white/50 py-6'}`}>
-        <div className="container-custom">
+      <nav className={`transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3 border-b border-slate-100' : 'bg-white/50 py-4 md:py-6'}`}>
+        <div className="container-custom px-4 md:px-0">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-4 group">
@@ -71,13 +71,13 @@ export default function Navigation({ onStartProject }) {
               </div>
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center gap-10">
+            {/* Desktop Menu - Hide on mobile */}
+            <div className="hidden 2xl:flex items-center gap-10">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-[11px] font-black tracking-[0.2em] text-slate-600 hover:text-emerald-600 transition-all relative group"
+                  className="text-[11px] font-black tracking-[0.2em] text-slate-600 hover:text-emerald-600 transition-all relative group whitespace-nowrap"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full" />
@@ -85,7 +85,7 @@ export default function Navigation({ onStartProject }) {
               ))}
               <button 
                 onClick={onStartProject}
-                className="btn-crystal btn-primary !px-8 !py-3"
+                className="btn-crystal btn-primary !px-8 !py-3 flex-shrink-0"
               >
                 Let's Chat
               </button>
@@ -94,21 +94,22 @@ export default function Navigation({ onStartProject }) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 text-emerald-600 !bg-transparent !border-none !shadow-none"
+              className="2xl:hidden p-2 text-emerald-600 !bg-transparent !border-none !shadow-none z-40"
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <div className={`lg:hidden fixed inset-0 top-0 bg-white transition-transform duration-500 z-[-1] flex flex-col items-center justify-center gap-8 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        {/* Mobile Menu - Only show on small screens */}
+        <div className={`2xl:hidden fixed inset-0 top-[80px] bg-white transition-all duration-300 z-40 flex flex-col items-center justify-start gap-6 pt-8 overflow-y-auto ${isMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
           {menuItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-3xl font-black tracking-tighter text-slate-900 hover:text-emerald-600 transition-colors"
+              className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 hover:text-emerald-600 transition-colors"
             >
               {item.label}
             </a>
@@ -118,11 +119,19 @@ export default function Navigation({ onStartProject }) {
               setIsMenuOpen(false);
               onStartProject();
             }}
-            className="btn-crystal btn-primary !px-12 !py-4"
+            className="btn-crystal btn-primary !px-12 !py-4 mt-4"
           >
             GET STARTED
           </button>
         </div>
+        
+        {/* Mobile Menu Backdrop */}
+        {isMenuOpen && (
+          <div 
+            className="2xl:hidden fixed inset-0 top-[80px] bg-black/20 z-30 transition-opacity duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
       </nav>
     </header>
   );

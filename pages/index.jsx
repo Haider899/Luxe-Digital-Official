@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
+import StatsSection from '../components/StatsSection';
 import Reviews from '../components/Reviews';
 import Team from '../components/Team';
 import WhyUs from '../components/WhyUs';
@@ -66,7 +67,8 @@ export default function Home() {
         <div className="relative z-10 pt-[110px]">
           <Hero onStartProject={openContactModal} />
           <WhyUs onStartProject={openContactModal} />
-          <Services />
+          <Services onStartProject={openContactModal} />
+          <StatsSection />
           <Team 
             onStartProject={openContactModal} 
             onViewProfile={(member) => setSelectedTeamMember(member)}

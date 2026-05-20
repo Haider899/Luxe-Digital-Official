@@ -18,7 +18,7 @@ export default function Footer() {
       ), 
       href: 'https://www.tiktok.com/@muqaddas.khan388?_r=1&_t=ZN-96GobN1vFoM' 
     },
-    { Icon: Linkedin, href: '#' },
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/luxe-digital/' },
   ];
 
   const openPolicy = (type) => (e) => {
@@ -35,8 +35,8 @@ export default function Footer() {
         onClose={() => setActivePolicy(null)} 
       />
 
-      <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="container-custom px-4 md:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
           {/* Brand & Mission */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
@@ -62,10 +62,10 @@ export default function Footer() {
           {/* Solutions Column */}
           <div>
             <h4 className="text-slate-900 font-black text-sm uppercase tracking-widest mb-8">Solutions</h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {['Video Solutions', 'Full Stack Dev', 'Meta Advertising', 'Brand Identity', 'UI/UX Design', 'Content Strategy'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-slate-500 hover:text-emerald-600 text-sm transition-colors">{link}</a>
+                  <a href="#services" className="text-slate-500 hover:text-emerald-600 text-sm transition-colors">{link}</a>
                 </li>
               ))}
             </ul>
@@ -77,12 +77,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {['About Us', 'Our Process', 'Case Studies', 'Expert Team', 'Contact Us'].map((link) => (
                 <li key={link}>
-                  <button 
-                    onClick={link === 'Privacy Policy' ? openPolicy('Privacy') : undefined}
-                    className="text-slate-500 hover:text-emerald-600 text-sm transition-colors text-left"
+                  <a 
+                    href={link === 'Contact Us' ? '#contact' : '#'} 
+                    className="text-slate-500 hover:text-emerald-600 text-sm transition-colors"
                   >
                     {link}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -117,13 +117,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">
+          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest text-center md:text-left">
             © {currentYear} Luxe Digital. All rights reserved.
           </p>
-          <div className="flex gap-8 text-xs text-slate-400 font-bold uppercase tracking-widest">
+          <div className="flex flex-wrap gap-4 md:gap-8 text-xs text-slate-400 font-bold uppercase tracking-widest justify-center">
             <button onClick={openPolicy('Terms')} className="hover:text-emerald-600 transition-colors">Terms</button>
             <button onClick={openPolicy('Privacy')} className="hover:text-emerald-600 transition-colors">Privacy</button>
-            <button onClick={openPolicy('Cookie Policy')} className="hover:text-emerald-600 transition-colors">Cookie Policy</button>
+            <button onClick={openPolicy('Cookie Policy')} className="hover:text-emerald-600 transition-colors">Cookies</button>
           </div>
         </div>
       </div>
