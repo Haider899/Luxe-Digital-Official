@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, ExternalLink, Github, Linkedin, Facebook } from 'lucide-react';
+import { X, ExternalLink, Github, Linkedin, Facebook, Instagram } from 'lucide-react';
 import { services } from './Services';
 
 export default function TeamMemberModal({ member, onClose, onChat }) {
@@ -132,6 +132,29 @@ export default function TeamMemberModal({ member, onClose, onChat }) {
                   className="btn-crystal !bg-blue-50 !text-blue-600 !border-blue-200"
                 >
                   <Facebook className="w-4 h-4" /> Facebook
+                </a>
+              )}
+              {member.social?.instagram && (
+                <a
+                  href={member.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-pink-50 !text-pink-600 !border-pink-200"
+                >
+                  <Instagram className="w-4 h-4" /> Instagram
+                </a>
+              )}
+              {member.social?.tiktok && (
+                <a
+                  href={member.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-crystal !bg-slate-900 !text-white !border-slate-900"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+                  </svg>
+                  TikTok
                 </a>
               )}
             </div>

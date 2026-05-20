@@ -10,7 +10,11 @@ const teamMembers = [
     icon: Megaphone,
     serviceIndex: 2,
     portfolio: null,
-    social: {},
+    social: { 
+      facebook: 'https://www.facebook.com/share/1J1Yix7evh/',
+      instagram: 'https://www.instagram.com/muqaddas2670?igsh=MWtnMWxmbTB2ZXNp',
+      tiktok: 'https://www.tiktok.com/@muqaddas.khan388?_r=1&_t=ZN-96GobN1vFoM'
+    },
     description: 'Leading our digital ecosystem with strategic vision and performance-driven marketing campaigns that scale businesses globally.',
     categorizedSkills: [
       {
